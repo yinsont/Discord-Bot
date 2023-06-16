@@ -7,6 +7,7 @@ module.exports = {
 		.addUserOption(option => option.setName('target').setDescription('The member to kick').setRequired(true)),
 	async execute(interaction) {
 		const member = interaction.options.getMember('target');
+		console.log(member)
 		return interaction.reply({ content: `You wanted to kick: ${member.user.username}`, ephemeral: true });
 	},
 };
