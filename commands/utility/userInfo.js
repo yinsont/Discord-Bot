@@ -8,7 +8,7 @@ module.exports = {
 
     async execute(interaction){
         const member = interaction.options.getMember('user')
-        console.log(member.user)
+        console.log(member)
         return interaction.reply('Data being sent to console')
     }
 }
