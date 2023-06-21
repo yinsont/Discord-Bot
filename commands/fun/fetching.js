@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const {SlashCommandBuilder} = require("discord.js");
   const { Configuration, OpenAIApi } = require("openai");
   require("dotenv").config();
   
@@ -52,7 +52,7 @@ const { SlashCommandBuilder } = require("discord.js");
       // ...
   
       // Provide the final result as an update to the initial response
-      await interaction.editReply(`Processing completed!\nResult: ${result}`);
+      await interaction.editReply(`Processing completed!\n\nDemand: ${str}\n\nResult: ${result}`);
     },
   };
   
