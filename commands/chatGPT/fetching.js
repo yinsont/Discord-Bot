@@ -7,14 +7,14 @@ const {SlashCommandBuilder} = require("discord.js");
   
   module.exports = {
     data: new SlashCommandBuilder()
-      .setName("fetch")
-      .setDescription("fetch from an api")
+      .setName("chatgpt")
+      .setDescription("State your demands to our lord")
       .addStringOption((option) =>
-        option.setName("string").setDescription("What would you like to say")
+        option.setName("demand").setDescription("What would you like our lord and savior to do?")
       ),
   
     async execute(interaction) {
-      const str = interaction.options.getString("string");
+      const str = interaction.options.getString("demand");
   
       // Acknowledge the command and provide an initial response
       await interaction.deferReply();
@@ -52,7 +52,7 @@ const {SlashCommandBuilder} = require("discord.js");
       // ...
   
       // Provide the final result as an update to the initial response
-      await interaction.editReply(`Processing completed!\n\nDemand: ${str}\n\nResult: ${result}`);
+      await interaction.editReply(`Processing completed!\n\nDemand: ${str}\n\nResult:\n${result}`);
     },
   };
   
