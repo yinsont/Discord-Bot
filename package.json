@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/yinsont/Discord-Bot#readme",
   "dependencies": {
-    "discord.js": "^14.11.0"
+    "axios": "^1.4.0",
+    "child_process": "^1.0.2",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1",
+    "openai": "^3.3.0"
   },
   "devDependencies": {
     "eslint": "^8.42.0"
