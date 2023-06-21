@@ -1,11 +1,9 @@
-const {
-    SlashCommandBuilder,
-    SlashCommandSubcommandBuilder,
-    ReactionUserManager,
-  } = require("discord.js");
+const { SlashCommandBuilder } = require("discord.js");
   const { Configuration, OpenAIApi } = require("openai");
   require("dotenv").config();
-  const { execSync } = require("child_process");
+  
+  // Array to store the history of responses
+  const responseHistory = [];
   
   module.exports = {
     data: new SlashCommandBuilder()
@@ -19,7 +17,7 @@ const {
       const str = interaction.options.getString("string");
   
       // Acknowledge the command and provide an initial response
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply();
       await interaction.editReply("Processing your request...");
   
       const configuration = new Configuration({
@@ -33,6 +31,11 @@ const {
         { role: "user", content: "Hello world" },
       ];
   
+      // Add historical responses to the messages array
+      for (const response of responseHistory) {
+        messages.push({ role: "user", content: response });
+      }
+  
       messages.push({ role: "user", content: str });
   
       const completion = await openai.createChatCompletion({
@@ -42,11 +45,14 @@ const {
   
       const result = completion.data.choices[0].message.content;
   
+      // Store the response in the history array
+      responseHistory.push(result);
+  
       // Perform additional processing if needed
       // ...
   
       // Provide the final result as an update to the initial response
-      await interaction.editReply(`Processing completed!\nDemand: ${str}\nResult: ${result}`);
+      await interaction.editReply(`Processing completed!\nResult: ${result}`);
     },
   };
   
