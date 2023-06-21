@@ -22,7 +22,7 @@ module.exports = {
         if (baseVerification == 3) baseVerification = "High"
         if (baseVerification == 4) baseVerification = "Max"
 
-        console.log(guild)
+        console.log(interaction.member.guild.members)
 
         const embed = new EmbedBuilder()
         .setColor("Blue")

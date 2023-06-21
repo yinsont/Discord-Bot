@@ -24,7 +24,7 @@ for (const folder of commandFolders) {
 }
 
 client.once(Events.ClientReady, () => {
-	console.log('Ready!');
+	console.log(`Logged in as ${client.user.tag}`);
 });
 
 // client.on(Events.MessageCreate, (message) => {
