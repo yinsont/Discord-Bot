@@ -5,7 +5,11 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('join')
         .setDescription('Joins a Voice Channel')
-        .addChannelOption(option => option.setName('channel').setDesccription('The channel to join')).setRequired(true).addChannelTypes(ChannelType.GuildVoice),
+        .addChannelOption(option => 
+            option.setName('channel')
+            .setDescription('The channel to join')
+            .setRequired(true)
+            .addChannelTypes(ChannelType.GuildVoice)),
 
     async execute(interaction){
         const voiceChannel = interaction.options.getChannel('channel')
@@ -13,9 +17,11 @@ module.exports = {
             channelId: voiceChannel.id,
             guildId: interaction.guildId,
             adapterCreator: interaction.guild.voiceAdapterCreator,
+            selfDeaf: false,
         })
 
-        console.log(getVoiceConnections())
+        // console.log(getVoiceConnections())
+        await interaction.reply(`Joined ${voiceChannel}`)
     }
 }
 //https://www.youtube.com/watch?v=lyc3EjjXQfo
