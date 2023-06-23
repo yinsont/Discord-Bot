@@ -20,7 +20,7 @@ module.exports = {
             selfDeaf: false,
         })
 
-        console.log(getVoiceConnections())
+        // console.log(getVoiceConnections())
         await interaction.reply(`Joined ${voiceChannel}`)
     }
 }
