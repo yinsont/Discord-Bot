@@ -35,3 +35,6 @@ module.exports = {
     }
   },
 };
+
+//discordjs.guide/voice/audio-resources.html#cheat-sheet
+//discordjs.guide/voice/audio-player.html#cheat-sheet
