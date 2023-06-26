@@ -21,6 +21,8 @@ module.exports = {
     if (!interaction.member.voice.channel)
         return interaction.reply('No')
     
+      // await interaction.deferReply();
+      await interaction.reply({content: 'ok', ephemeral: true})
     const voiceChannel = interaction.member.voice.channel
     
     const connection = joinVoiceChannel({
