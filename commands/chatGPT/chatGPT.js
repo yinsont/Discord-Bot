@@ -18,7 +18,7 @@ const {SlashCommandBuilder} = require("discord.js");
   
       // Acknowledge the command and provide an initial response
       await interaction.deferReply();
-      await interaction.editReply("Processing your request...");
+      await interaction.editReply("https://media.tenor.com/Q3Kms4iVVo0AAAAC/hmm-spongebob.gif");
   
       const configuration = new Configuration({
         apiKey: process.env.API_KEY,
