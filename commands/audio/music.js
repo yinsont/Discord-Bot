@@ -22,7 +22,7 @@ module.exports = {
         return interaction.reply('No')
     
       // await interaction.deferReply();
-      await interaction.reply({content: 'ok', ephemeral: true})
+      await interaction.reply({content: 'https://media.tenor.com/SwO6NZo4KacAAAAC/scheming-evil-plan.gif', ephemeral: true})
     const voiceChannel = interaction.member.voice.channel
     
     const connection = joinVoiceChannel({
