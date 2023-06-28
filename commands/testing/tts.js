@@ -12,4 +12,5 @@ module.exports = {
         //?1118555076794003559
         await interaction.channel.send({ content: '/tts ' + msg, tts: true})
     }
-}//https://www.edenai.co/post/top-10-text-to-speech-api
+}//https://www.edenai.co/post/top-10-text-to-speech-api 
+//https://murf.ai/text-to-speech-api
