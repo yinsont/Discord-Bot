@@ -1,6 +1,9 @@
 const {SlashCommandBuilder, messageLink, Message} = require('discord.js')
-const say = require('say')
+// const say = require('say')
 const gTTS = require('gtts');
+const {joinVoiceChannel} = require('@discordjs/voice')
+const {join} = require('node:path')
+const {createAudioResource, createAudioPlayer} = require('@discordjs/voice')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,12 +17,36 @@ module.exports = {
         //?1118555076794003559
         
         let gtts = new gTTS(msg, 'en');
-        gtts.save('./commands/tts/hello.mp3', function (err, result) {
-          if(err) { throw new Error(err) }
-          console.log('Success! Open file /tmp/hello.mp3 to hear result.');
+        await new Promise((resolve, reject) => {
+          gtts.save('./commands/tts/hello.mp3', function (err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              console.log('Success! Open file ./commands/tts/hello.mp3 to hear result.');
+              resolve();
+            }
+          });
         });
-          
-        interaction.channel.send(msg)
+        // interaction.reply({content: 'ok', ephemeral: true})
+        interaction.channel.send(msg);
+        
+        if (!interaction.member.voice.channel) return interaction.reply('No')
+        
+        const voiceChannel = interaction.member.voice.channel
+  
+        const connection = joinVoiceChannel({
+            channelId: voiceChannel.id,
+            guildId: interaction.guildId,
+            adapterCreator: interaction.guild.voiceAdapterCreator,
+            selfDeaf: false,
+          });
+        const player = createAudioPlayer()
+        const subscription = connection.subscribe(player);
+        let resource = createAudioResource(join(__dirname, 'hello.mp3'))
+        resource = createAudioResource(join(__dirname, 'hello.mp3'), {inlineVolume: true})
+        resource.volume.setVolume(0.5)
+
+        player.play(resource);
     }
 }//https://www.edenai.co/post/top-10-text-to-speech-api 
 //https://murf.ai/text-to-speech-api
