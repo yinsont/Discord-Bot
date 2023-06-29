@@ -10,13 +10,19 @@ module.exports = {
         .setName('tts')
         .setDescription('What would you like the bot to say?')
         .addStringOption((option) => 
-            option.setName('message').setDescription('message').setRequired(true)),
+            option.setName('message').setDescription('message').setRequired(true))
+        .addStringOption((option) =>
+        option
+          .setName("language")
+          .setDescription("en, fr, zh-CN, zh-TW, pt, es")
+          .setRequired(true)
+      ),
 
     async execute(interaction) {
         const msg = interaction.options.getString('message')
         //?1118555076794003559
-        
-        let gtts = new gTTS(msg, 'en');
+        const language = interaction.options.getString('language')
+        let gtts = new gTTS(msg, language);
         await new Promise((resolve, reject) => {
           gtts.save('./commands/tts/hello.mp3', function (err, result) {
             if (err) {
@@ -50,3 +56,4 @@ module.exports = {
     }
 }//https://www.edenai.co/post/top-10-text-to-speech-api 
 //https://murf.ai/text-to-speech-api
+//https://gtts.readthedocs.io/en/latest/module.html#
