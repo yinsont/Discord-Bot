@@ -33,11 +33,14 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    if (!interaction.member.voice.channel) return interaction.reply("No");
+    if (!interaction.member.voice.channel){
+      return interaction.reply("No");
+    }
 
     const volume = interaction.options.getNumber("volume") || 0.5;
 
     const demand = interaction.options.getString("demand");
+    const accent = interaction.options.getString("accent");
 
     // Acknowledge the command and provide an initial response
     await interaction.deferReply();
@@ -82,22 +85,21 @@ module.exports = {
     );
     // const msg = interaction.options.getString('message')
     //?1118555076794003559
-    const accent = interaction.options.getString("accent");
     console.log(newresult);
     let gtts = new gTTS(newresult, accent);
     await new Promise((resolve, reject) => {
-      gtts.save("./commands/chatGPT/hello.mp3", function (err, result) {
+      gtts.save("./commands/chatGPT/chatGPT.mp3", function (err, result) {
         if (err) {
           reject(err);
         } else {
           console.log(
-            "Success! Open file ./commands/chatGPT/hello.mp3 to hear result."
+            "Success! Open file ./commands/chatGPT/chatGPT.mp3 to hear result."
           );
           resolve();
         }
       });
     });
-    
+
     const voiceChannel = interaction.member.voice.channel;
 
     const connection = joinVoiceChannel({
@@ -108,8 +110,8 @@ module.exports = {
     });
     const player = createAudioPlayer();
     const subscription = connection.subscribe(player);
-    let resource = createAudioResource(join(__dirname, "hello.mp3"));
-    resource = createAudioResource(join(__dirname, "hello.mp3"), {
+    let resource = createAudioResource(join(__dirname, "chatGPT.mp3"));
+    resource = createAudioResource(join(__dirname, "chatGPT.mp3"), {
       inlineVolume: true,
     });
     resource.volume.setVolume(volume);

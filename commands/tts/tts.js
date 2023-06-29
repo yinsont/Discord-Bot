@@ -27,15 +27,15 @@ module.exports = {
     const msg = interaction.options.getString("message");
 
     //?1118555076794003559
-    const language = interaction.options.getString("language");
-    let gtts = new gTTS(msg, language);
+    const accent = interaction.options.getString("accent");
+    let gtts = new gTTS(msg, accent);
     await new Promise((resolve, reject) => {
-      gtts.save("./commands/tts/hello.mp3", function (err, result) {
+      gtts.save("./commands/tts/tts.mp3", function (err, result) {
         if (err) {
           reject(err);
         } else {
           console.log(
-            "Success! Open file ./commands/tts/hello.mp3 to hear result."
+            "Success! Open file ./commands/tts/tts.mp3 to hear result."
           );
           resolve();
         }
@@ -56,12 +56,12 @@ module.exports = {
     });
     const player = createAudioPlayer();
     const subscription = connection.subscribe(player);
-    let resource = createAudioResource(join(__dirname, "hello.mp3"));
-    resource = createAudioResource(join(__dirname, "hello.mp3"), {
+    let resource = createAudioResource(join(__dirname, "tts.mp3"));
+    resource = createAudioResource(join(__dirname, "tts.mp3"), {
       inlineVolume: true,
     });
     resource.volume.setVolume(volume);
-    console.log(volume)
+    // console.log(volume)
     player.play(resource);
   },
 }; //https://www.edenai.co/post/top-10-text-to-speech-api
