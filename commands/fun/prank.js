@@ -8,8 +8,8 @@ const { createAudioResource, StreamType, createAudioPlayer, VoiceConnectionStatu
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("play")
-    .setDescription("Play a track or playlist from url or name")
+    .setName("prank")
+    .setDescription("prank your friends w/ a audio")
     .addStringOption((option) =>
       option
         .setName("track")
@@ -60,3 +60,6 @@ module.exports = {
 
 //discordjs.guide/voice/audio-resources.html#cheat-sheet
 //discordjs.guide/voice/audio-player.html#cheat-sheet
+
+// https://www.youtube.com/watch?v=8PhdfcX9tG0
+//https://www.youtube.com/watch?v=X8ipUgXH6jw

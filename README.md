@@ -1,5 +1,7 @@
 Custom Discord Bot 
 
-npm install discord.js
-npm install dotenv
-npm install --save-dev eslint
+Discord Bot meant for my own friend group
+
+So far has chatGPT and tts integrated.
+
+Plans include voice to text, music player, and voice commands.

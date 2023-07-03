@@ -15,15 +15,19 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("accent")
-        .setDescription("Choose from these accents: en, fr, zh-CN, zh-TW, pt, es")
+        .setDescription(
+          "Choose from these accents: en, fr, zh-CN, zh-TW, pt, es"
+        )
         .setRequired(true)
     )
     .addNumberOption((option) =>
-      option.setName("volume").setDescription("Set Volume Level 0-10(recommend 0.5)")
+      option
+        .setName("volume")
+        .setDescription("Set Volume Level 0-10(recommend 0.5)")
     ),
 
   async execute(interaction) {
-    const volume = interaction.options.getNumber('volume') || 0.5
+    const volume = interaction.options.getNumber("volume") || 0.5;
     const msg = interaction.options.getString("message");
 
     //?1118555076794003559
@@ -67,3 +71,5 @@ module.exports = {
 }; //https://www.edenai.co/post/top-10-text-to-speech-api
 //https://murf.ai/text-to-speech-api
 //https://gtts.readthedocs.io/en/latest/module.html#
+// https://docs.descriptapi.com/
+//https://docs.descriptapi.com/
